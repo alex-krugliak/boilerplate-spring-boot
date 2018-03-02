@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.ServletRequest;
+import java.util.List;
 
 
 /**
@@ -28,7 +29,7 @@ public class MainController {
 
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     @ResponseBody
-    public Page<UserView> getUsers(ServletRequest request) {
+    public List<UserView> getUsers(ServletRequest request) {
         return userHandler.getAllUsers(request);
     }
 }

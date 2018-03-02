@@ -1,8 +1,10 @@
 package com.web;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.web.controller.wrapper.UserView;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -44,10 +46,11 @@ public class WebTest {
 
             String jsonResponse = IOUtils.toString(response.getEntity().getContent());
             Gson gson = new Gson();
-            JsonObject jsonObject = gson.fromJson(jsonResponse, JsonObject.class);
-            JsonElement field = jsonObject.get("totalPages");
+            JsonArray jsonArray = gson.fromJson(jsonResponse, JsonArray.class);
+            JsonObject jsonObject = jsonArray.get(0).getAsJsonObject();
+            UserView userView = gson.fromJson(jsonObject, UserView.class);
 
-            Assert.assertEquals("Wrong users pages amount", field.getAsInt(), 2);
+            Assert.assertEquals("Wrong users pages amount", userView.getName(), "Vasia3");
 
         } catch (IOException ex) {
             logger.error("Error, message - " + ex.getMessage());

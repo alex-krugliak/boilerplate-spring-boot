@@ -1,20 +1,15 @@
 package com.web;
 
-import com.web.model.Role;
-import com.web.model.RoleEnum;
 import com.web.model.User;
 import com.web.persistent.RoleRepository;
 import com.web.persistent.UserRepository;
 import com.web.service.UserService;
-import com.web.service.handler.UserHandler;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import java.util.List;
 
 /**
  * Created by alex on 13.02.18.
